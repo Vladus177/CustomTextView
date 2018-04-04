@@ -5,5 +5,5 @@ Created with MVVM pattern and Android data binding library.
 
 #Image
 
-![Alt text](CustomTextView/customview.png?raw=true "Title")
+![](https://www.dropbox.com/s/f2kseu43xcxx3az/customview.png?dl=0)
 
