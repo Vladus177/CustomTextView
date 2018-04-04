@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="ru.vladus177.customview.MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
+
+        <LinearLayout
+            android:id="@+id/ll_activity_info"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/WhiteText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@={viewmodel.activity}"
+                android:textAlignment="center"
+                android:visibility="@{viewmodel.isRunning ? View.VISIBLE : View.GONE}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ru.vladus177.customview.util.TrackingTextView
+                android:id="@+id/tv_timer"
+                style="@style/MainTimerText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/timer_main_vertical_margin"
+                android:layout_gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@={viewmodel.activityTimeLeft}"
+                android:textAlignment="center"
+                android:visibility="@{viewmodel.isRunning ? View.VISIBLE : View.GONE}"
+                app:fonttype="digital7" />
+
+            <TextView
+                android:id="@+id/tv_paused"
+                style="@style/WhiteTextBold"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/timer_main_vertical_margin"
+                android:layout_gravity="center_vertical"
+                android:text="@={viewmodel.info}"
+                android:textAlignment="center"
+                android:visibility="@{viewmodel.isRunning ? View.GONE : View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <include layout="@layout/divider" />
+
+        <RelativeLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:id="@+id/tv_sets_info"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/sets" />
+
+            <ru.vladus177.customview.util.TrackingTextView
+                android:id="@+id/tv_sets_detail"
+                style="@style/WhiteTextBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:maxLength="2"
+                android:maxLines="1"
+                app:fonttype="digital7"
+                app:textfromint="@{viewmodel.sets}" />
+
+
+            <TextView
+                android:id="@+id/tv_cycle_info"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_toEndOf="@+id/tv_sets_info"
+                android:text="@string/cycles" />
+
+            <ru.vladus177.customview.util.TrackingTextView
+                android:id="@+id/tv_cycle_detail"
+                style="@style/WhiteTextBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="32dp"
+                android:layout_toEndOf="@+id/tv_sets_info"
+                android:maxLength="2"
+                android:maxLines="1"
+                app:fonttype="digital7"
+                app:textfromint="@{viewmodel.cycles}" />
+
+
+            <TextView
+                android:id="@+id/tv_totaltime_info"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/total_time" />
+
+            <ru.vladus177.customview.util.TrackingTextView
+                android:id="@+id/tv_totaltime_detail"
+                style="@style/WhiteTextBold2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/tv_cycle_detail"
+                android:maxLines="1"
+                android:text="@={viewmodel.totalTimeLeft}"
+                app:fonttype="digital7" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:animateLayoutChanges="true"
+            android:background="@color/colorLightBlack"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:animateLayoutChanges="true"
+                android:onClick="@{(v) -> viewmodel.onPause (v)}"
+                app:icActive="@{@drawable/ic_play_circle_outline_white_24dp}"
+                app:icCompleted="@{@drawable/ic_pause_circle_outline_white_24dp}"
+                app:imageCompleted="@{viewmodel.isRunning}" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>

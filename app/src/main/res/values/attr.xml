@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TrackingTextView">
+        <attr name="fonttype">
+            <enum name="digital7" value="0" />
+        </attr>
+    </declare-styleable>
+
+</resources>

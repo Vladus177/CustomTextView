@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorBlack</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MainTimerText" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/timer_main_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WhiteTextBase" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:paddingStart">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingEnd">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="WhiteText" parent="WhiteTextBase">
+        <item name="android:textSize">@dimen/timer_cycle_text_size</item>
+    </style>
+
+    <style name="WhiteTextBold" parent="WhiteTextBase">
+        <item name="android:textSize">@dimen/timer_additional_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WhiteTextBold2" parent="WhiteTextBase">
+        <item name="android:textSize">@dimen/timer_totaltime_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
